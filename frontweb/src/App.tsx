@@ -1,13 +1,9 @@
 import "./assets/styles/custom.scss";
 import "./App.css";
-import Routes from "Routes";
+import Rota from "Routes";
 
-const App = () => {
-  return (
-    <>
-      <Routes />
-    </>
-  );
-};
+function App() {
+  return <Rota />;
+}
 
 export default App;
