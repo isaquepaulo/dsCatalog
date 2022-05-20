@@ -18,7 +18,7 @@ const ProductDetails = () => {
                 alt="Nome produto"
               />
             </div>
-            <div className="name-price-container">
+            <div className="name-price-container d-xl-block">
               <h1>Nome do Produto</h1>
               <ProductPrice price={2345.67} />
             </div>
