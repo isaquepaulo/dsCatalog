@@ -2,6 +2,7 @@ import Navbar from "components/Navbar";
 import Home from "pages/Home";
 import Catalog from "pages/Catalog";
 import Admin from "pages/Admin";
+import ProductDetails from "pages/ProductDetails";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const Rota = () => {
@@ -11,6 +12,11 @@ const Rota = () => {
       <Routes>
         <Route path="/" caseSensitive={false} element={<Home />} />
         <Route path="/products" caseSensitive={false} element={<Catalog />} />
+        <Route
+          path="/products/:productId"
+          caseSensitive={false}
+          element={<ProductDetails />}
+        />
         <Route path="/admin" caseSensitive={false} element={<Admin />} />
       </Routes>
     </Router>
