@@ -17,7 +17,8 @@ const Rota = () => {
           caseSensitive={false}
           element={<ProductDetails />}
         />
-        <Route path="/admin" caseSensitive={false} element={<Admin />} />
+
+        <Route path="/admin/*" element={<Admin />} />
       </Routes>
     </Router>
   );
