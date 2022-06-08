@@ -3,7 +3,7 @@ import { ReactComponent as ArrowIcons } from "assets/images/arrow.svg";
 
 type Props = {
   text: string;
-};
+}; 
 const ButtonIcon = ({ text }: Props) => {
   return (
     <div className="btn-container">
