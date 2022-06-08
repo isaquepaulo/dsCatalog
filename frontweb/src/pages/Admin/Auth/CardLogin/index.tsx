@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import ButtonIcon from "components/ButtonIcon";
 import { useForm, SubmitHandler } from "react-hook-form";
-
+import { requestBackendLogin } from "util/request";
 import "./styles.css";
+
 type FormData = {
   username: string;
   password: string;
@@ -12,7 +13,14 @@ const Login = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
-    console.log(formData);
+    requestBackendLogin(formData)
+    .then(response => {
+        console.log('Sucesso', response);
+    })
+    .catch(error => {
+      console.log('ERRO', error);
+    })
+
   };
   return (
     <div className="base-card login-card">
