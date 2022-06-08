@@ -1,6 +1,7 @@
 import { ReactComponent as AuthImage } from "assets/images/auth-image.svg";
 import { Navigate, Route, Routes } from "react-router-dom";
 import CardLogin from "./CardLogin";
+import "./styles.css";
 const Auth = () => {
   return (
     <div className="auth-container">
