@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonIcon from "components/ButtonIcon";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { getAuthData, requestBackendLogin, saveAuthData } from "util/request";
@@ -19,6 +19,8 @@ const Login = () => {
     formState: { errors },
   } = useForm<FormData>();
 
+  const history = useNavigate();
+
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then((response) => {
@@ -27,6 +29,7 @@ const Login = () => {
         console.log("Token Gerado:" + token);
         setHasError(false);
         console.log("Sucesso", response);
+        history("/admin");
       })
       .catch((error) => {
         setHasError(true);
