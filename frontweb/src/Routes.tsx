@@ -5,10 +5,12 @@ import Admin from "pages/Admin";
 import ProductDetails from "pages/ProductDetails";
 import Auth from "pages/Admin/Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import history from "util/history";
 
 const Rota = () => {
   return (
-    <Router>
+    <HistoryRouter history={history}>
       <Navbar />
       <Routes>
         <Route path="/" caseSensitive={false} element={<Home />} />
@@ -18,7 +20,7 @@ const Rota = () => {
           caseSensitive={false}
           element={<ProductDetails />}
         />
-      
+
         <Route
           path="/admin/auth/*"
           caseSensitive={false}
@@ -27,7 +29,7 @@ const Rota = () => {
 
         <Route path="/admin/*" element={<Admin />} />
       </Routes>
-    </Router>
+    </HistoryRouter>
   );
 };
 
