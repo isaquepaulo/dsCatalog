@@ -3,10 +3,12 @@ import "./styles.css";
 
 import ButtonIcon from "components/ButtonIcon";
 import { Link } from "react-router-dom";
+import { isAuthenticated } from "util/request";
 
 const Home = () => {
   return (
     <div className="home-container">
+      <h1>{isAuthenticated() ? 'Authenticated' : 'Not Authenticated'}</h1>
       <div className="home-card base-card">
         <div className="home-content-container">
           <div>
