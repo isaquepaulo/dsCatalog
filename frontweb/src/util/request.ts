@@ -4,7 +4,8 @@ import history from './history';
 import jwtDecode from 'jwt-decode'
 
 type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN';
-type TokenData = 
+
+export type TokenData = 
     {
         exp: number,
         user_name: string,
@@ -63,6 +64,10 @@ export const getAuthData = () => {
     const str = localStorage.getItem(tokenKey) ?? "{}";
     const obj = JSON.parse(str);
     return obj as LoginResponse;
+}
+
+export const removeAuthData = () => {
+    localStorage.removeItem(tokenKey);
 }
 
 // Add a request interceptor
