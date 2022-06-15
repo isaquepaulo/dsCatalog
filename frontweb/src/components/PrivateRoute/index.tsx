@@ -1,10 +1,22 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { isAuthenticated } from "util/request";
+import { hasAnyRoles, isAuthenticated, Role } from "util/request";
 
-function PrivateRoute() {
-  const location = useLocation();
+type Props = {
+  path: string;
+  roles?: Role[];
+};
+
+function PrivateRoute({ path, roles = [] }: Props) {
   const auth = isAuthenticated();
-  return  auth ? <Outlet /> : <Navigate to="/admin/auth/login"  state={{ from: location}} />
+  const location = useLocation();
+
+  return !auth ? (
+    <Navigate to="/admin/auth/login" state={{ from: location }} />
+  ) : !hasAnyRoles(roles) ? (
+    <Navigate to="/admin/products" />
+  ) : (
+    <Outlet />
+  );
 }
 
 export default PrivateRoute;
