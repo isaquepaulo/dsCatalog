@@ -1,19 +1,14 @@
 import "./styles.css";
 import "bootstrap/js/src/collapse.js";
 import { Link, NavLink } from "react-router-dom";
-import {
-  getTokenData,
-  isAuthenticated,
-  removeAuthData,
-} from "util/request";
+
 import React, { useContext, useEffect } from "react";
 import history from "util/history";
 import { AuthContext } from "AuthContext";
-
-
+import { getTokenData, isAuthenticated } from "util/auth";
+import { removeAuthData } from "util/storage";
 
 const Navbar = () => {
-
   const { authContextData, setAuthContextData } = useContext(AuthContext);
   useEffect(() => {
     if (isAuthenticated()) {
@@ -27,9 +22,6 @@ const Navbar = () => {
       });
     }
   }, [setAuthContextData]);
-
-
-
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();

@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { hasAnyRoles, isAuthenticated, Role } from "util/request";
+import { hasAnyRoles, isAuthenticated, Role } from "util/auth";
 
 type Props = {
   path: string;
