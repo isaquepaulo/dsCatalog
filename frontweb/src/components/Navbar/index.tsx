@@ -70,7 +70,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <NavLink
-                to="/admin"
+                to="/admin/products"
                 className={(navData) => (navData.isActive ? "active" : "")}
               >
                 ADMIN

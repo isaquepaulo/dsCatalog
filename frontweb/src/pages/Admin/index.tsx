@@ -1,7 +1,8 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
-import Users from "./User";
+import Users from "./Users";
 import PrivateRoute from "components/PrivateRoute";
+import Products from "./Products";
 import "./styles.css";
 
 const Admin = () => {
@@ -10,8 +11,8 @@ const Admin = () => {
       <Navbar />
       <div className="admin-content">
         <Routes>
-          <Route path="/" element={<PrivateRoute path={"/"} />}>
-            <Route path="products" element={<h1>blabla product</h1>} />
+          <Route path="/" element={<PrivateRoute path={"products"} />}>
+            <Route path="products/*" element={<Products />} />
             <Route path="categories" element={<h1>Categories Crud</h1>} />
           </Route>
           <Route

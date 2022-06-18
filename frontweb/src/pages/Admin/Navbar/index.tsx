@@ -12,13 +12,13 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="categories" className="admin-nav-item">
+          <NavLink to="/admin/categories" className="admin-nav-item">
             <p>Categorias</p>
           </NavLink>
         </li>
         {hasAnyRoles(["ROLE_ADMIN"]) && (
           <li>
-            <NavLink to="users" className="admin-nav-item">
+            <NavLink to="/admin/users" className="admin-nav-item">
               <p>Usuários</p>
             </NavLink>
           </li>
