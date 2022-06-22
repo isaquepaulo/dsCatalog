@@ -5,17 +5,23 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
     margin-bottom: 0;
 }
 
-a, a:hover {
+a,
+a:hover {
     text-decoration: none;
     color: unset;
 }
 
-.base-card{
+.base-card {
     background: #fff;
     box-shadow: 8px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -27,10 +33,9 @@ a, a:hover {
     letter-spacing: -0.015em;
     color: #263238;
     height: 50px;
-  }
-   
-  .base-input::placeholder {
-    color: #9E9E9E;
-  }
-  
+    background-color: #fff
+}
 
+.base-input::placeholder {
+    color: #9E9E9E;
+}

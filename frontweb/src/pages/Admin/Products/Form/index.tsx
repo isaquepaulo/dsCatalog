@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import Select from "react-select";
 import { Product } from "types/product";
 import { requestBackend } from "util/request";
 
@@ -12,6 +13,12 @@ type UrlParams = {
 };
 
 const Form = () => {
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
+
   const { productId } = useParams<UrlParams>();
 
   const isEditing = productId !== "create";
@@ -85,6 +92,15 @@ const Form = () => {
                   {errors.name?.message}
                 </div>
               </div>
+
+              <div className="margin-bottom-30">
+                <Select
+                  options={options}
+                  classNamePrefix="product-crud-select"
+                  isMulti
+                />
+              </div>
+
               <div className="margin-bottom-30">
                 <input
                   {...register("price", {
