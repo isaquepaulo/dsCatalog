@@ -1,6 +1,6 @@
 .pagination-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
 }
 
@@ -24,18 +24,25 @@
 
 }
 
-.arrow-previous{
-    transform: rotate(180deg)
+.pagination-link-active {
+    background-color: #4078ff;
+
+}
+
+.arrow-previous {
+    transform: rotate(180deg);
+    color: #4078ff;
 
 }
 
 .arrow-next {
     margin-left: 10px;
+    color: #4078ff;
 }
 
 .arrow-inactive {
     color: #e1e1e1;
-    
+
 }
 
 
