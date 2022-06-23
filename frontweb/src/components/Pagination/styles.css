@@ -49,3 +49,8 @@
 .arrow-active {
     color: #4078ff;
 }
+
+.pagination-arrow-container {
+    display: flex;
+    align-items: center;
+}

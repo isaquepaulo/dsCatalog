@@ -14,12 +14,12 @@ const Catalog = () => {
 
   const [isLoading, setisLoading] = useState(false);
 
-  useEffect(() => {
-    const params: AxiosRequestConfig = { 
+  const getProducts = (pageNumber: number) => {
+    const params: AxiosRequestConfig = {
       method: "GET",
       url: `/products`,
       params: {
-        page: 0,
+        page: pageNumber,
         size: 12,
       },
     };
@@ -33,6 +33,10 @@ const Catalog = () => {
       .finally(() => {
         setisLoading(false);
       });
+  };
+
+  useEffect(() => {
+    getProducts(0);
   }, []);
 
   return (
@@ -56,7 +60,11 @@ const Catalog = () => {
         )}
 
         <div className="row">
-          <Pagination />
+          <Pagination
+            pageCount={page ? page.totalPages : 0}
+            range={3}
+            onChange={getProducts}
+          />
         </div>
       </div>
     </div>
