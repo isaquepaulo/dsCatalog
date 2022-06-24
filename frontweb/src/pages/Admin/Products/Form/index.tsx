@@ -7,6 +7,7 @@ import Select from "react-select";
 import { Category } from "types/category";
 import { Product } from "types/product";
 import { requestBackend } from "util/request";
+import { toast } from "react-toastify";
 
 import "./styles.css";
 
@@ -51,8 +52,10 @@ const Form = () => {
   }, [isEditing, productId, setValue]);
 
   const onSubmit = (formData: Product) => {
-
-    const data = {...formData, price: String(formData.price).replace(',','.')}
+    const data = {
+      ...formData,
+      price: String(formData.price).replace(",", "."),
+    };
     const config: AxiosRequestConfig = {
       method: isEditing ? "PUT" : "POST",
       url: isEditing ? `/products/${productId}` : `/products`,
@@ -60,9 +63,14 @@ const Form = () => {
       withCredentials: true,
     };
 
-    requestBackend(config).then(() => {
-      history("/admin/products");
-    });
+    requestBackend(config)
+      .then(() => {
+        toast.success("Product cadastrado com sucesso");
+        history("/admin/products");
+      })
+      .catch(() => {
+        toast.error("Erro ao cadastrar o produto");
+      });
   };
 
   const handleCancel = () => {
@@ -118,24 +126,22 @@ const Form = () => {
                 )}
               </div>
 
-
-
               <div className="margin-bottom-30">
-                <Controller 
-                name="price"
-                rules={{required: 'Campo obrigatório'}}
-                control={control}
-                render={({ field }) => (
-                  <CurrencyInput 
-                    placeholder="Preço"
-                    className={`form-control base-input ${
-                      errors.name ? "is-invalid" : ""
-                    }`}
-                    disableGroupSeparators={true}
-                    value={field.value}
-                    onValueChange={field.onChange}  
-                  />
-                )}                
+                <Controller
+                  name="price"
+                  rules={{ required: "Campo obrigatório" }}
+                  control={control}
+                  render={({ field }) => (
+                    <CurrencyInput
+                      placeholder="Preço"
+                      className={`form-control base-input ${
+                        errors.name ? "is-invalid" : ""
+                      }`}
+                      disableGroupSeparators={true}
+                      value={field.value}
+                      onValueChange={field.onChange}
+                    />
+                  )}
                 />
                 <div className="invalid-feedback d-block">
                   {errors.price?.message}
