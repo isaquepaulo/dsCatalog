@@ -2,10 +2,15 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 import history from "util/history";
 import Catalog from "..";
+import { server } from "./fixtures"
 
-test('should render Catalog', async () => {
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close())
+
+test('should render Catalog with products', async () => {
     //ARRANGE
-    const text = 'Fazer Login';
     //ACT
     render(
         <HistoryRouter history={history}>
@@ -17,7 +22,7 @@ test('should render Catalog', async () => {
     expect(screen.getByText('Catálogo de produtos')).toBeInTheDocument();
 
     await waitFor(() => {
-        expect(screen.getByText('Smart TV')).toBeInTheDocument();
+        expect(screen.getByText('PC Gamer Max')).toBeInTheDocument();
     });
 
 
