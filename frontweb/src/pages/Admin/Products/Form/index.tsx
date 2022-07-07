@@ -65,7 +65,7 @@ const Form = () => {
 
     requestBackend(config)
       .then(() => {
-        toast.success("Product cadastrado com sucesso");
+        toast.success("Produto cadastrado com sucesso");
         history("/admin/products");
       })
       .catch(() => {
@@ -90,11 +90,11 @@ const Form = () => {
                     required: "Campo obrigatório",
                   })}
                   type="text"
-                  className={`form-control base-input ${
-                    errors.name ? "is-invalid" : ""
-                  }`}
+                  className={`form-control base-input ${errors.name ? "is-invalid" : ""
+                    }`}
                   placeholder="Nome do Produto"
                   name="name"
+                  data-testid="name"
                 />
                 <div className="invalid-feedback d-block">
                   {errors.name?.message}
@@ -102,6 +102,7 @@ const Form = () => {
               </div>
 
               <div className="margin-bottom-30">
+                <label htmlFor="categories" className="d-none">Categorias</label>
                 <Controller
                   name="categories"
                   rules={{ required: true }}
@@ -116,6 +117,10 @@ const Form = () => {
                       getOptionValue={(category: Category) =>
                         String(category.id)
                       }
+                      inputId="categories"
+
+
+
                     />
                   )}
                 />
@@ -134,12 +139,12 @@ const Form = () => {
                   render={({ field }) => (
                     <CurrencyInput
                       placeholder="Preço"
-                      className={`form-control base-input ${
-                        errors.name ? "is-invalid" : ""
-                      }`}
+                      className={`form-control base-input ${errors.name ? "is-invalid" : ""
+                        }`}
                       disableGroupSeparators={true}
                       value={field.value}
                       onValueChange={field.onChange}
+                      data-testid="price"
                     />
                   )}
                 />
@@ -158,11 +163,11 @@ const Form = () => {
                     },
                   })}
                   type="text"
-                  className={`form-control base-input ${
-                    errors.name ? "is-invalid" : ""
-                  }`}
+                  className={`form-control base-input ${errors.name ? "is-invalid" : ""
+                    }`}
                   placeholder="URL da imagem do produto"
                   name="imgUrl"
+                  data-testid="imgUrl"
                 />
                 <div className="invalid-feedback d-block">
                   {errors.imgUrl?.message}
@@ -176,11 +181,11 @@ const Form = () => {
                   {...register("description", {
                     required: "Campo obrigatório",
                   })}
-                  className={`form-control base-input h-auto ${
-                    errors.name ? "is-invalid" : ""
-                  }`}
+                  className={`form-control base-input h-auto ${errors.name ? "is-invalid" : ""
+                    }`}
                   placeholder="Descrição"
                   name="description"
+                  data-testid="description"
                 />
                 <div className="invalid-feedback d-block">
                   {errors.description?.message}
