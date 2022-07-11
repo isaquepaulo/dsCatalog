@@ -28,7 +28,6 @@ describe('Product form create tests', () => {
     test('should show toast and redirect when submit form correctly', async () => {
         render(
             <HistoryRouter history={history}>
-
                 <Form />
             </HistoryRouter>
         );
