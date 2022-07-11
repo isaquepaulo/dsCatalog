@@ -57,4 +57,25 @@ describe('Product form create tests', () => {
 
 
     });
+
+
+    test('should show 5 validation messages when just clicking', async () => {
+        render(
+            <HistoryRouter history={history}>
+                <ToastContainer />
+                <Form />
+            </HistoryRouter>
+        );
+
+        const submitButton = screen.getByRole('button', { name: /salvar/i })
+
+        userEvent.click(submitButton);
+
+        await waitFor(() => {
+            const messages = screen.getAllByAltText('Campo obrigatório');
+            expect(messages)
+        })
+
+
+    });
 });
