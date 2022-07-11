@@ -28,6 +28,7 @@ describe('Product form create tests', () => {
     test('should show toast and redirect when submit form correctly', async () => {
         render(
             <HistoryRouter history={history}>
+                <ToastContainer />
                 <Form />
             </HistoryRouter>
         );
@@ -36,11 +37,24 @@ describe('Product form create tests', () => {
         const imgUrlInput = screen.getByTestId("imgUrl");
         const descriptionInput = screen.getByTestId("description");
         const categoriesInput = screen.getByLabelText("Categorias");
+        const submitButton = screen.getByRole('button', { name: /salvar/i })
 
         await selectEvent.select(categoriesInput, ['Eletrônicos', 'Computadores'])
         userEvent.type(nameInput, 'Computador');
         userEvent.type(priceInput, '5000.12');
         userEvent.type(imgUrlInput, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
         userEvent.type(descriptionInput, 'Computador muito bom');
+
+        userEvent.click(submitButton);
+
+        await waitFor(() => {
+            const toastElements = screen.getByText('Produto cadastrado com sucesso')
+            expect(toastElements).toBeInTheDocument();
+        });
+
+        expect(history.location.pathname).toEqual('/admin/products')
+
+
+
     });
 });
