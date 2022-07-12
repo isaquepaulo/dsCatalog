@@ -44,7 +44,7 @@ const findCategoriesResponse = {
     empty: false
 };
 
-const saveProductResponse = {
+export const ProductResponse = {
 
     "id": 3,
     "name": "Macbook Pro",
@@ -56,6 +56,10 @@ const saveProductResponse = {
         {
             "id": 3,
             "name": "Computadores"
+        },
+        {
+            "id": 2,
+            "name": "Eletrônicos"
         }
     ]
 
@@ -72,7 +76,21 @@ export const server = setupServer(
     rest.post(`${BASE_URL}/products`, (req, res, ctx) => {
         return res(
             ctx.status(201),
-            ctx.json(saveProductResponse)
+            ctx.json(ProductResponse)
+        );
+    }),
+
+    rest.put(`${BASE_URL}/products/:productId`, (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json(ProductResponse)
+        );
+    }),
+
+    rest.get(`${BASE_URL}/products/:productId`, (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json(ProductResponse)
         );
     }),
 
